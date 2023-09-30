@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro to JS</title>
+</head>
+<body>
+    <h1>Вступ до JavaScript</h1>
+    <p>
+        <dfn>JavaScript</dfn>
+         - мова программування, відпочатку створена для HTML, але на сьогодні - 
+        самостійна мова. JS - вільна мова (від ліцензій), але саме назва ліцензована. Для публікаціі стандартів
+        мови вживається термін <dfn>ECMA-Script (ES)</dfn> .
+    </p>
+    <p>
+        Кажучі про JS мається на увазі дві реалізаціі мови: 
+        браузерний варіант та <dfn>NodeJS</dfn>  - збірка самостійної мови. Це мова-інтерпретатор або <dfn>REPL</dfn>  (Read-Eval-Print Loop).
+    </p>
+    <p>
+        Для того щоб запустити JS у бразері є декілька можливостей.
+        <ul>
+            <li>
+                Включивши код в атрібути полів HTML-документів, які відповідають за оброблення подій, наприклад, 
+                атрибут <code onclick="alert('Clicked')">onclick</code>
+            </li>
+            <li>
+                Додавши секцію &lt;script>&lt;/script>
+                <script>
+                    console.log('script works')
+                </script>
+            </li>
+            <li>
+                Створивши окремий файл-скрипт та підключивши його тим же тегом 
+                &lt;script src="..." >&lt;/script>
+                (дозволяється лише одне - або тіло, або файл) 
+                <script src="script.js"></script>
+            </li>
+        </ul>
+    </p>
+
+</body>
+</html>
