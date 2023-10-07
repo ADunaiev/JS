@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Події у JavaScript</h1>
+
+        <div class="row">
+
+            <div class="div1 col s4 card" onclick="div1click(event)"
+                data-product="product1">
+                <div class="div2"><b>product1</b>
+                </div>
+            </div>
+
+            <div class="div1 col s4 card" onclick="div1click(event)"
+                data-product="product2">
+                <div class="div2"><b>product2</b>
+                </div>
+            </div>
+
+        </div>
+
+        <input type="text" placeholder="Enter something" 
+            onfocus="inputFocused()"
+            onblur="inputBlured()"
+            onchange="inputChanged()">
+
+        <input type="text" 
+            onkeydown="input2keydown(event)"
+            onkeypress="input2keypress(event)">
+
+    </div>
+    
+    <script src="script.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</body>
+</html>

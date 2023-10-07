@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Document Object Model (DOM)</h1>
+
+        <p>
+            DOM - концепція, згідно з якою верстка HTML перетворюється у набір об'єктів (ООП). 
+            Одже їх ієрархія відповідає розмітці, атрибути тегів перетворюються в атрибути об'єктів. 
+            Іншими словами, створюється відповідність між HTML та "деревом" програмних сутностей (об'єктів), 
+            причому цей зв'язок двосторонній - зміни у HTML перестворюють "дерево", зміни у "дереві" 
+            (прогрмними засобами) впливають на HTML. 
+        </p>
+        <p>
+            Рисами DOM є пошук елементів (об'єктів) та їх колекцій, навігація по "дереву" (вгору-батько, вниз-підлеглі, 
+            вбоки-сусіди), а також модифікація дерева програмними засобами.
+        </p>
+        <p>
+            Пошук елементів: <code>document.getElenentXXXXX</code> та 
+            <code>node.querrySelector</code>
+        </p>
+        <p id="out"></p>
+
+        <h3>Задача - генерувати таблицю</h3>
+        <p>
+            У скрипті визначено масив даних, треба з них створити HTML таблицю за натиском 
+            <button>цієї кнопки</button>
+        </p>
+        <p id="out-table"></p>
+
+    </div>
+    
+    <script src="script.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</body>
+</html>
