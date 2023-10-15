@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <!--Import Google Icon Font-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Форми. Валідація форм.</h1>
+
+        <p>
+            <dfn> Форми</dfn> - засоби HTML для передачі даних від користувача до сервера. 
+            Форми автоматично збірають введені дані у певні поля та передають їх. 
+            Валідація - процес перевірки введених даних на відповідність певним правилам 
+            та відмова у надсиланні, якщо правила порушені. 
+        </p>
+        <p>
+            Існує два класичних способа реалізації валідації. 
+            <ol>
+                <li>
+                    Перехват повідомлення від форми про надсилання даних 
+                </li>
+                <li>
+                    Відмова від автоматичного надсилання і збір даних "вручну" - за 
+                    допомогою скрипту. 
+                </li>
+            </ol>
+        </p>
+
+        <h2>
+            Перехват повідомлення
+        </h2>
+        <p>
+            При надсиланні (натиску на кнопку "submit") форма створює подію "submit",
+            ії обробник "onsubmit" може бути підключенний до документу. Але перехоплення 
+            повідомлення не зупиняє надсилання форми, лише дозволяє додати активності. 
+            Для зупинки надсилання слід викликати метод
+            <code>e.preventDefault();</code>
+            у об'єкта події. 
+        </p>
+
+        <form id="login-form">
+            <div class="row">
+                <div class="col s12">
+                    <div class="row">
+                        <div class="input-field">
+                            <input name="user-login" placeholder="Ввкдіть логін" type="text">
+                            <input type="submit" class="inline" value="Надіслати">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <p>
+            Форма "збирає" дані з полів, які мають атрибут "name", інші поля можуть вільно розміщуватись 
+            на формі, проте, передача даних, введених у них, відбуватись не буде. В об'єкт-подію самі дані не 
+            передаються, але є посилання на саму форму (e.target). Вилучення даних для валідації проводиться у 
+            скрипті. 
+        </p>
+
+        <div class="row">
+            <form class="col s12" id="name-phone-form">
+
+              <div class="row valign-wrapper">
+
+                <div class="input-field col s4">
+                  <i class="material-icons prefix">account_circle</i>
+                  <input name="user-name" id="icon_prefix" type="text" class="validate">
+                  <label for="icon_prefix">First Name</label>
+                  <span class="helper-text" 
+                        data-error="Ім'я не може бути порожним, містити ціфри чи спецзнаки" 
+                        data-success="Приймається">Введіть ім'я</span>
+                </div>
+
+                <div class="input-field col s4">
+                  <i class="material-icons prefix">phone_iphone</i>
+                  <input name="user-phone" id="icon_telephone" type="tel" class="validate">
+                  <label for="icon_telephone">Telephone</label>
+                  <span class="helper-text" 
+                        data-error="Телефон не може бути порожним, містити букви чи спецзнаки" 
+                        data-success="Приймається">Введіть телефон</span>
+                </div>
+
+                <div class="col s3">
+                    <button type="submit" class="waves-effect waves-light btn purple darken-3">
+                        <i class="material-icons right">send</i>
+                        button
+                    </button>
+                </div>
+
+              </div>
+
+            </form>
+          </div>
+
+          <p>
+            Якщо є потреба валідації кількох форм, то перехват подій надсилання краще 
+            делегувати самим формам (а не документу). 
+          </p>
+
+          <h2>Регулярні вирази</h2>
+          <p>
+            Поглиблені можливості валідації надають <dfn>регулярні вирази</dfn>. 
+            Основу виразів складають наступні елементи:  
+          </p>
+          <ul class="collection">
+
+            <li class="collection-item">
+                Узагальнені символи (Unicode): 
+                <ul>
+                    <li>\s - space (пробіл, табуляція, розрив, ...)</li>
+                    <li>\S - non-space</li>
+                    <li>\d - digit</li>
+                    <li>\D - non-digit</li>
+                    <li>\w - word (допустимість у іменах змінних: букви, цифри, підкреслення)</li>
+                    <li>\W - non-word</li>
+                    <li>. - довільний символ</li>
+                    <li>а також символи-якоря
+                        <ul>
+                            <li>
+                                ^ - початок рядку
+                            </li>
+                            <li>$ - кінець рядку</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="collection-item">
+                Множини символів: 
+                <ul>
+                    <li>[abc] - один з символів "a", або "b", або "c"</li>
+                    <li>[a-f] - один з діапазону від "a" до "f"</li>
+                    <li>[^abc] - один, окрім перелічених</li>
+                    <li>а також групи:
+                        <ul>
+                            <li>() - група, набір символів, що вважаються за ціле</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="collection-item">
+                Квантифікатори (показчики кількості)
+                <ul>
+                    <li>? - один або 0</li>
+                    <li>+ - один або довільна кількість</li>
+                    <li>* - довільна кількість (у т.ч. 0)</li>
+                    <li>{3} - рівно 3 рази</li>
+                    <li>{3,5} - від 3 до 5</li>
+                    <li>{3,} - 3 та більше</li>
+                </ul>
+            </li>
+          </ul>
+
+    </div>
+    
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
