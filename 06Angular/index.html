@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mainApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular</title>
+    <!--Import Google Icon Font-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="angular.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Основи Angular</h1>
+
+        <p>
+            <dfn>Angular</dfn> це JS фреймворк. Існує два види фреймворків: 
+            <ol>
+                <li><a href="https://angularjs.org">Angular.JS (або Angular-1)</a></li>
+                <li><a href="https://angular.io">Angular-CLI</a></li>
+            </ol>
+        </p>
+        <p>
+           Концепція Angular полягає у компонентній моделі, схожей на ООП. Задачі 
+           розбиваються на певні групи, для яких створюються компоненти, що є локалізованими 
+           утворюваннями (мають локальні дані, змінні тощо - віджети) і при цьому взаємодіють з глобальним контекстом. 
+           А також реалізація паттерну MVVM, який дозволяє зв'язування (та спостереження) з 
+           автоматичним оновленням представлень (view) при зміні значень Моделі, яка знаходиться під спостереженням. 
+
+        </p>
+        <p>
+            Angular впроваджується у HTML, та ставить під автоматичне спостереження блок, позначений 
+            атрібутом <code>ng-app</code>. Частіше за все, цим атриботом позначають увесь документ 
+            <code>&lt;html ng-app></code>. Усередині блоку, опрацьовуються вирази, для створення виразу 
+            використовуються подвійні фігурни дужки { {3 + 4} } = {{ 3 + 4 }} 
+        </p>
+        <p>
+            Зв'язування даних відбувається через моделі. Модель може бути створена як у HTML, так і у коді. 
+            <input ng-model="username" type="text"/>
+            Доступ до даних моделі здійснюється через вираз з ії іменем: 
+            введено - <b>{{username}}</b> 
+        </p>
+
+        <div  ng-controller="mainController">
+            <div class="row">
+                <div class="col s6">
+                    Замовник: <input type="text" ng-model="client">
+                    Адреса: <textarea ng-model="address" class="materialize-textarea"></textarea>
+                    Замовлення: 
+                    <label>
+                        <input type="radio" name="group1" ng-model="form" value="Delivery">
+                        <span>Доставка</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="group1" ng-model="form" value="Pickup">
+                        <span>Самовивіз</span>
+                    </label>
+
+                </div>
+
+                <div class="card small grey lighten-4 col s6">
+                    <span class="card-title">{{client}}</span>
+                    <div class="card-content">
+                        <p>
+                            {{address}}
+                        </p>
+                        <p>
+                            {{form}}
+                        </p>
+                    </div>
+                    
+                </div>
+
+            
+
+                <h2>Контролери</h2>
+                <p>
+                    Контролери - спосіб утворення та ініціалізації scope - локальної області (лексикографичного 
+                    околу) застосунку. Дивись скрипт та коментарі у ньому. Окіл по-перше дозволяє створити змінні, 
+                    функції, які доступні всім дочірнім елементам контролера. По-друге, надає програмний доступ 
+                    до їх значень. По-третє, автоматично ставить на спостереження ці змінні (вважає іх моделями). 
+                </p>
+
+
+
+                <div class="row valign-wrapper">
+                    <div class="col s12 center-align">
+                        <button ng-click="decClick()" class="btn waves-effect waves-light"><i class="material-icons">chevron_left</i></button>
+                        <b> {{data2}} </b>
+                        <button ng-click="incClick()" class="btn waves-effect waves-light"><i class="material-icons">chevron_right</i></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row" ng-controller="secondController">
+            <div class="row valign-wrapper">
+                <div class="col s3 center-align">
+                    data1 = {{data1}}
+                </div>
+                <div class="col s3 center-align">
+                    <button ng-click="btnClick()" class="btn waves-effect waves-light">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <h2>Директиви</h2>
+        <div class="row">
+            <p>
+                В Angular директиви - розширення ідеї контролера зі спрощенним впровадженням у DOM, а також 
+                з можливістю включення до свого складу розмітки. Директиви включаються одним з наступних способів:
+                <ul>
+                    <li>restrict: "A" - атрібут довільного тега</li>
+                    <li>restrict: "C" - через ім'я класу</li>
+                    <li>restrict: "M" - через коментар</li>
+                    <li>restrict: "E" - через ім'я тегу (самий поширенний спосіб)</li>
+                </ul>
+            </p>
+        </div>
+        <div directive1></div>
+        <div class="directive2"></div>
+        <!--directive:directive3 -->
+        <directive4></directive4>
+        
+        <h2>Компоненти</h2>
+        <p>
+            Компоненти - це еволюція директив, певно "обгортка" над ними. 
+            З найбільш поширеними значеннями за замовченням:
+            <ul>
+                <li>впровадження у теги</li>
+                <li>ізоляція околу</li>
+                <li>не потрібна функція при ініціалізації</li>
+                <li>і тд</li>
+            </ul>
+        </p>
+        <component1></component1>
+        <component2></component2>
+
+        
+    </div>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
